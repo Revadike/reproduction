@@ -11,7 +11,7 @@ import { html as html$1 } from 'file:///home/roy/Projects/reproduction/reproduct
 import { consola, createConsola } from 'file:///home/roy/Projects/reproduction/reproduction/node_modules/consola/dist/index.mjs';
 import { createGenerator } from 'file:///home/roy/Projects/reproduction/reproduction/node_modules/@unocss/core/dist/index.mjs';
 import presetWind from 'file:///home/roy/Projects/reproduction/reproduction/node_modules/@unocss/preset-wind/dist/index.mjs';
-import { parseURL, withoutBase, joinURL, getQuery, withQuery, withTrailingSlash, hasProtocol, withHttps, withoutProtocol, withoutTrailingSlash, withLeadingSlash, withBase, joinRelativeURL, withoutLeadingSlash, parsePath } from 'file:///home/roy/Projects/reproduction/reproduction/node_modules/ufo/dist/index.mjs';
+import { parseURL, withoutBase, joinURL, getQuery, withQuery, withTrailingSlash, hasProtocol, withHttps, withoutProtocol, withoutTrailingSlash, withLeadingSlash, withBase, joinRelativeURL, withoutLeadingSlash, parsePath, parseQuery, stringifyQuery, encodePath, stringifyParsedURL } from 'file:///home/roy/Projects/reproduction/reproduction/node_modules/ufo/dist/index.mjs';
 import sizeOf from 'file:///home/roy/Projects/reproduction/reproduction/node_modules/image-size/dist/index.js';
 import playwrightCore from 'file:///home/roy/Projects/reproduction/reproduction/node_modules/playwright-core/index.mjs';
 import { Launcher } from 'file:///home/roy/Projects/reproduction/reproduction/node_modules/chrome-launcher/dist/index.js';
@@ -19,7 +19,6 @@ import { getRequestDependencies, getPreloadLinks, getPrefetchLinks, createRender
 import { stringify, parse, uneval } from 'file:///home/roy/Projects/reproduction/reproduction/node_modules/devalue/index.js';
 import destr from 'file:///home/roy/Projects/reproduction/reproduction/node_modules/destr/dist/index.mjs';
 import { renderToString } from 'file:///home/roy/Projects/reproduction/reproduction/node_modules/vue/server-renderer/index.mjs';
-import { hash } from 'file:///home/roy/Projects/reproduction/reproduction/node_modules/ohash/dist/index.mjs';
 import { propsToString, renderSSRHead } from 'file:///home/roy/Projects/reproduction/reproduction/node_modules/@unhead/ssr/dist/index.mjs';
 import { createServerHead as createServerHead$1, CapoPlugin, createHeadCore } from 'file:///home/roy/Projects/reproduction/reproduction/node_modules/unhead/dist/index.mjs';
 import { isVNode, toValue, version, unref } from 'file:///home/roy/Projects/reproduction/reproduction/node_modules/vue/index.mjs';
@@ -27,6 +26,7 @@ import { defineHeadPlugin } from 'file:///home/roy/Projects/reproduction/reprodu
 import unstorage_47drivers_47fs from 'file:///home/roy/Projects/reproduction/reproduction/node_modules/unstorage/drivers/fs.mjs';
 import { klona } from 'file:///home/roy/Projects/reproduction/reproduction/node_modules/klona/dist/index.mjs';
 import { snakeCase } from 'file:///home/roy/Projects/reproduction/reproduction/node_modules/scule/dist/index.mjs';
+import { hash } from 'file:///home/roy/Projects/reproduction/reproduction/node_modules/ohash/dist/index.mjs';
 import { toRouteMatcher, createRouter } from 'file:///home/roy/Projects/reproduction/reproduction/node_modules/radix3/dist/index.mjs';
 import { $fetch as $fetch$1, createFetch as createFetch$1, Headers as Headers$1 } from 'file:///home/roy/Projects/reproduction/reproduction/node_modules/ofetch/dist/node.mjs';
 import { createCall, createFetch } from 'file:///home/roy/Projects/reproduction/reproduction/node_modules/unenv/runtime/fetch/index.mjs';
@@ -143,7 +143,7 @@ const _inlineRuntimeConfig = {
       "version": "3.3.8"
     },
     "nuxt-link-checker": {
-      "version": "3.1.0",
+      "version": "3.1.1",
       "hasSitemapModule": true,
       "rootDir": "/home/roy/Projects/reproduction/reproduction",
       "isNuxtContentDocumentDriven": false,
@@ -199,7 +199,7 @@ const _inlineRuntimeConfig = {
       }
     ],
     "credits": true,
-    "version": "6.0.0-beta.2",
+    "version": "6.0.0",
     "sitemaps": {
       "sitemap.xml": {
         "sitemapName": "sitemap.xml",
@@ -231,11 +231,11 @@ const _inlineRuntimeConfig = {
         "defaultLocale": "en"
       }
     ],
-    "version": "2.2.15",
+    "version": "2.2.16",
     "debug": false
   },
   "nuxt-robots": {
-    "version": "4.1.3",
+    "version": "4.1.6",
     "usingNuxtContent": false,
     "debug": false,
     "credits": true,
@@ -261,7 +261,7 @@ const _inlineRuntimeConfig = {
     "cacheControl": "max-age=14400, must-revalidate"
   },
   "nuxt-simple-robots": {
-    "version": "4.1.3",
+    "version": "4.1.6",
     "usingNuxtContent": false,
     "debug": false,
     "credits": true,
@@ -287,7 +287,7 @@ const _inlineRuntimeConfig = {
     "cacheControl": "max-age=14400, must-revalidate"
   },
   "nuxt-og-image": {
-    "version": "3.0.0-rc.65",
+    "version": "3.0.0-rc.66",
     "satoriOptions": {},
     "resvgOptions": {},
     "sharpOptions": {},
@@ -302,7 +302,7 @@ const _inlineRuntimeConfig = {
       "cacheMaxAgeSeconds": 259200
     },
     "debug": true,
-    "baseCacheKey": "/cache/nuxt-og-image/3.0.0-rc.65",
+    "baseCacheKey": "/cache/nuxt-og-image/3.0.0-rc.66",
     "fonts": [
       {
         "cacheKey": "Inter:400",
@@ -379,7 +379,7 @@ new Proxy(/* @__PURE__ */ Object.create(null), {
   }
 });
 
-const serverAssets = [{"baseName":"nuxt-og-image:fonts","dir":"/home/roy/Projects/reproduction/reproduction/.nuxt/cache/nuxt-og-image@3.0.0-rc.65/_fonts"},{"baseName":"server","dir":"/home/roy/Projects/reproduction/reproduction/server/assets"}];
+const serverAssets = [{"baseName":"nuxt-og-image:fonts","dir":"/home/roy/Projects/reproduction/reproduction/.nuxt/cache/nuxt-og-image@3.0.0-rc.66/_fonts"},{"baseName":"server","dir":"/home/roy/Projects/reproduction/reproduction/server/assets"}];
 
 const assets$1 = createStorage();
 
@@ -853,6 +853,18 @@ const _yyf1RihQOo = (function(nitro) {
 
 const rootDir = "/home/roy/Projects/reproduction/reproduction";
 
+const appHead = {"link":[{"rel":"icon","href":"/favicon.ico"}],"meta":[{"name":"viewport","content":"width=device-width, initial-scale=1"},{"charset":"utf-8"},{"property":"og:type","content":"website"}],"style":[],"script":[],"noscript":[],"htmlAttrs":{}};
+
+const appRootTag = "div";
+
+const appRootAttrs = {"id":"__nuxt"};
+
+const appTeleportTag = "div";
+
+const appTeleportAttrs = {"id":"teleports"};
+
+const appId = "nuxt-app";
+
 const devReducers = {
   VNode: (data) => isVNode(data) ? { type: data.type, props: data.props } : void 0,
   URL: (data) => data instanceof URL ? data.toString() : void 0
@@ -909,7 +921,7 @@ const _apUikqdGfj = (nitroApp) => {
       return;
     }
     try {
-      htmlContext.bodyAppend.unshift(`<script type="application/json" id="__NUXT_LOGS__">${stringify(ctx.logs, { ...devReducers, ...ctx.event.context._payloadReducers })}<\/script>`);
+      htmlContext.bodyAppend.unshift(`<script type="application/json" data-nuxt-logs="${appId}">${stringify(ctx.logs, { ...devReducers, ...ctx.event.context._payloadReducers })}<\/script>`);
     } catch (e) {
       const shortError = e instanceof Error && "toString" in e ? ` Received \`${e.toString()}\`.` : "";
       console.warn(`[nuxt] Failed to stringify dev server logs.${shortError} You can define your own reducer/reviver for rich types following the instructions in https://nuxt.com/docs/api/composables/use-nuxt-app#payload.`);
@@ -1290,7 +1302,13 @@ function getPathRobotConfig(e, options) {
     }
   }
   const path = options?.path || e.path;
-  const userAgent = options?.userAgent || getRequestHeader(e, "User-Agent");
+  let userAgent = options?.userAgent;
+  if (!userAgent) {
+    try {
+      userAgent = getRequestHeader(e, "User-Agent");
+    } catch {
+    }
+  }
   const nitroApp = useNitroApp();
   const groups = [
     // run explicit user agent matching first
@@ -2116,7 +2134,9 @@ async function fetchDataSource(input, event) {
       error: error.message
     };
   } finally {
-    abortRequestTimeout && clearTimeout(abortRequestTimeout);
+    if (abortRequestTimeout) {
+      clearTimeout(abortRequestTimeout);
+    }
   }
 }
 function globalSitemapSources() {
@@ -2425,26 +2445,38 @@ function resolve(s, resolvers) {
 function removeTrailingSlash(s) {
   return s.replace(/\/(\?|#|$)/, "$1");
 }
-function preNormalizeEntry(_e) {
+function preNormalizeEntry(_e, resolvers) {
   const e = typeof _e === "string" ? { loc: _e } : { ..._e };
   if (e.url && !e.loc) {
     e.loc = e.url;
     delete e.url;
   }
-  e.loc = removeTrailingSlash(e.loc || "");
+  if (typeof e.loc !== "string") {
+    e.loc = "";
+  }
+  e.loc = removeTrailingSlash(e.loc);
   e._abs = hasProtocol(e.loc, { acceptRelative: false, strict: false });
   try {
     e._path = e._abs ? parseURL(e.loc) : parsePath(e.loc);
   } catch (e2) {
     e2._path = null;
   }
-  if (e._path?.pathname === "")
-    e.loc = `${e.loc}/`;
   if (e._path) {
-    e._key = `${e._sitemap || ""}${e._path?.pathname || "/"}${e._path.search}`;
+    const query = parseQuery(e._path.search);
+    const qs = stringifyQuery(query);
+    e._relativeLoc = `${encodePath(e._path?.pathname)}${qs.length ? `?${qs}` : ""}`;
+    if (e._path.host) {
+      e.loc = stringifyParsedURL(e._path);
+    } else {
+      e.loc = e._relativeLoc;
+    }
   } else {
-    e._key = e.loc;
+    e.loc = encodeURI(e.loc);
   }
+  if (e.loc === "")
+    e.loc = `/`;
+  e.loc = resolve(e.loc, resolvers);
+  e._key = `${e._sitemap || ""}${withoutTrailingSlash(e.loc)}`;
   return e;
 }
 function normaliseEntry(_e, defaults, resolvers) {
@@ -2544,6 +2576,7 @@ function resolveKey(k) {
       return "image";
     case "videos":
       return "video";
+    // news & others?
     case "news":
       return "news";
     default:
@@ -2624,7 +2657,7 @@ function escapeValueForXml(value) {
   return String(value).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&apos;");
 }
 
-function resolveSitemapEntries(sitemap, sources, runtimeConfig) {
+function resolveSitemapEntries(sitemap, sources, runtimeConfig, resolvers) {
   const {
     autoI18n,
     isI18nMapped
@@ -2634,7 +2667,7 @@ function resolveSitemapEntries(sitemap, sources, runtimeConfig) {
     exclude: sitemap.exclude
   });
   const _urls = sources.flatMap((e) => e.urls).map((_e) => {
-    const e = preNormalizeEntry(_e);
+    const e = preNormalizeEntry(_e, resolvers);
     if (!e.loc || !filterPath(e.loc))
       return false;
     return e;
@@ -2647,7 +2680,7 @@ function resolveSitemapEntries(sitemap, sources, runtimeConfig) {
     validI18nUrlsForTransform = _urls.map((_e, i) => {
       if (_e._abs)
         return false;
-      const split = splitForLocales(_e.loc, localeCodes);
+      const split = splitForLocales(_e._relativeLoc, localeCodes);
       let localeCode = split[0];
       const pathWithoutPrefix = split[1];
       if (!localeCode)
@@ -2659,6 +2692,7 @@ function resolveSitemapEntries(sitemap, sources, runtimeConfig) {
         return false;
       e._locale = locale;
       e._index = i;
+      e._key = `${e._sitemap || ""}${e._path?.pathname || "/"}${e._path.search}`;
       withoutPrefixPaths[pathWithoutPrefix] = withoutPrefixPaths[pathWithoutPrefix] || [];
       if (!withoutPrefixPaths[pathWithoutPrefix].some((e2) => e2._locale.code === locale.code))
         withoutPrefixPaths[pathWithoutPrefix].push(e);
@@ -2676,7 +2710,7 @@ function resolveSitemapEntries(sitemap, sources, runtimeConfig) {
           }
           entries.push({
             href: u.loc,
-            hreflang: u._locale.code || autoI18n.defaultLocale
+            hreflang: u._locale._hreflang || autoI18n.defaultLocale
           });
           return entries;
         }).flat().filter(Boolean);
@@ -2691,13 +2725,13 @@ function resolveSitemapEntries(sitemap, sources, runtimeConfig) {
           e.alternatives = [
             {
               // apply default locale domain
-              ...autoI18n.locales.find((l) => [l.code, l.iso].includes(autoI18n.defaultLocale)),
+              ...autoI18n.locales.find((l) => [l.code, l.language].includes(autoI18n.defaultLocale)),
               code: "x-default"
             },
             ...autoI18n.locales.filter((l) => !!l.domain)
           ].map((locale) => {
             return {
-              hreflang: locale.iso || locale.code,
+              hreflang: locale._hreflang,
               href: joinURL(withHttps(locale.domain), e._pathWithoutPrefix)
             };
           });
@@ -2706,15 +2740,15 @@ function resolveSitemapEntries(sitemap, sources, runtimeConfig) {
             let loc = joinURL(`/${l.code}`, e._pathWithoutPrefix);
             if (autoI18n.differentDomains || ["prefix_and_default", "prefix_except_default"].includes(autoI18n.strategy) && l.code === autoI18n.defaultLocale)
               loc = e._pathWithoutPrefix;
-            const _sitemap = isI18nMapped ? l.iso || l.code : void 0;
+            const _sitemap = isI18nMapped ? l._sitemap : void 0;
             const newEntry = preNormalizeEntry({
               _sitemap,
               ...e,
               _index: void 0,
-              _key: `${_sitemap || ""}${loc}`,
+              _key: `${_sitemap || ""}${loc || "/"}${e._path.search}`,
               _locale: l,
               loc,
-              alternatives: [{ code: "x-default" }, ...autoI18n.locales].map((locale) => {
+              alternatives: [{ code: "x-default", _hreflang: "x-default" }, ...autoI18n.locales].map((locale) => {
                 const code = locale.code === "x-default" ? autoI18n.defaultLocale : locale.code;
                 const isDefault = locale.code === "x-default" || locale.code === autoI18n.defaultLocale;
                 let href = "";
@@ -2727,15 +2761,14 @@ function resolveSitemapEntries(sitemap, sources, runtimeConfig) {
                     href = joinURL("/", code, e._pathWithoutPrefix);
                   }
                 }
-                const hreflang = locale.iso || locale.code;
                 if (!filterPath(href))
                   return false;
                 return {
-                  hreflang,
+                  hreflang: locale._hreflang,
                   href
                 };
               }).filter(Boolean)
-            });
+            }, resolvers);
             if (e._locale.code === newEntry._locale.code) {
               _urls[e._index] = newEntry;
               e._index = void 0;
@@ -2746,7 +2779,8 @@ function resolveSitemapEntries(sitemap, sources, runtimeConfig) {
         }
       }
       if (isI18nMapped) {
-        e._sitemap = e._sitemap || e._locale.iso || e._locale.code;
+        e._sitemap = e._sitemap || e._locale._sitemap;
+        e._key = `${e._sitemap || ""}${e.loc || "/"}${e._path.search}`;
       }
       if (e._index)
         _urls[e._index] = e;
@@ -2781,14 +2815,14 @@ async function buildSitemapUrls(sitemap, resolvers, runtimeConfig) {
     return urls;
   }
   if (autoI18n?.differentDomains) {
-    const domain = autoI18n.locales.find((e) => [e.iso, e.code].includes(sitemap.sitemapName))?.domain;
+    const domain = autoI18n.locales.find((e) => [e.language, e.code].includes(sitemap.sitemapName))?.domain;
     if (domain) {
       const _tester = resolvers.canonicalUrlResolver;
       resolvers.canonicalUrlResolver = (path) => resolveSitePath(path, {
         absolute: true,
         withBase: false,
         siteUrl: withHttps(domain),
-        trailingSlash: !_tester("/test/").endsWith("/"),
+        trailingSlash: _tester("/test/").endsWith("/"),
         base: "/"
       });
     }
@@ -2796,7 +2830,7 @@ async function buildSitemapUrls(sitemap, resolvers, runtimeConfig) {
   const sources = sitemap.includeAppSources ? await globalSitemapSources() : [];
   sources.push(...await childSitemapSources(sitemap));
   const resolvedSources = await resolveSitemapSources(sources, resolvers.event);
-  const enhancedUrls = resolveSitemapEntries(sitemap, resolvedSources, { autoI18n, isI18nMapped });
+  const enhancedUrls = resolveSitemapEntries(sitemap, resolvedSources, { autoI18n, isI18nMapped }, resolvers);
   const filteredUrls = enhancedUrls.filter((e) => {
     if (isMultiSitemap && e._sitemap && sitemap.sitemapName)
       return e._sitemap === sitemap.sitemapName;
@@ -2871,7 +2905,8 @@ async function createSitemap(event, definition, runtimeConfig) {
   };
   await nitro.hooks.callHook("sitemap:resolved", resolvedCtx);
   const maybeSort = (urls2) => runtimeConfig.sortEntries ? sortSitemapUrls(urls2) : urls2;
-  const urls = maybeSort(mergeOnKey$1(resolvedCtx.urls.map((e) => normaliseEntry(e, definition.defaults, resolvers)), "_key"));
+  const normalizedPreDedupe = resolvedCtx.urls.map((e) => normaliseEntry(e, definition.defaults, resolvers));
+  const urls = maybeSort(mergeOnKey$1(normalizedPreDedupe, "_key").map((e) => normaliseEntry(e, definition.defaults, resolvers)));
   const sitemap = urlsToXml(urls, resolvers, runtimeConfig);
   const ctx = { sitemap, sitemapName };
   await nitro.hooks.callHook("sitemap:output", ctx);
@@ -7476,7 +7511,7 @@ const imageSrc = defineSatoriTransformer([
         try {
           const imageSize = sizeOf(imageBuffer);
           dimensions = { width: imageSize.width, height: imageSize.height };
-        } catch (e2) {
+        } catch {
         }
         if (dimensions?.width && dimensions?.height) {
           const naturalAspectRatio = dimensions.width / dimensions.height;
@@ -7857,16 +7892,6 @@ const unheadPlugins = true ? [CapoPlugin({ track: true })] : [];
 
 const renderSSRHeadOptions = {"omitLineBreaks":false};
 
-const appHead = {"link":[{"rel":"icon","href":"/favicon.ico"}],"meta":[{"name":"viewport","content":"width=device-width, initial-scale=1"},{"charset":"utf-8"},{"property":"og:type","content":"website"}],"style":[],"script":[],"noscript":[],"htmlAttrs":{}};
-
-const appRootTag = "div";
-
-const appRootAttrs = {"id":"__nuxt"};
-
-const appTeleportTag = "div";
-
-const appTeleportAttrs = {"id":"teleports"};
-
 globalThis.__buildAssetsURL = buildAssetsURL;
 globalThis.__publicAssetsURL = publicAssetsURL;
 const getClientManifest = () => import('file:///home/roy/Projects/reproduction/reproduction/.nuxt/dist/server/client.manifest.mjs').then((r) => r.default || r).then((r) => typeof r === "function" ? r() : r);
@@ -8015,7 +8040,9 @@ const renderer = defineRenderHandler(async (event) => {
   const inlinedStyles = isRenderingIsland ? await renderInlineStyles(ssrContext.modules ?? []) : [];
   const NO_SCRIPTS = routeOptions.experimentalNoScripts;
   const { styles, scripts } = getRequestDependencies(ssrContext, renderer.rendererContext);
-  head.push({ style: inlinedStyles });
+  if (inlinedStyles.length) {
+    head.push({ style: inlinedStyles });
+  }
   if (!isRenderingIsland || true) {
     const link = [];
     for (const style in styles) {
@@ -8027,7 +8054,9 @@ const renderer = defineRenderHandler(async (event) => {
         link.push({ rel: "stylesheet", href: renderer.rendererContext.buildAssetsURL(resource.file) });
       }
     }
-    head.push({ link }, headEntryOptions);
+    if (link.length) {
+      head.push({ link }, headEntryOptions);
+    }
   }
   if (!NO_SCRIPTS && !isRenderingIsland) {
     head.push({
@@ -8037,7 +8066,7 @@ const renderer = defineRenderHandler(async (event) => {
       link: getPrefetchLinks(ssrContext, renderer.rendererContext)
     }, headEntryOptions);
     head.push({
-      script: renderPayloadJsonScript({ id: "__NUXT_DATA__", ssrContext, data: ssrContext.payload }) 
+      script: renderPayloadJsonScript({ ssrContext, data: ssrContext.payload }) 
     }, {
       ...headEntryOptions,
       // this should come before another end of body scripts
@@ -8073,17 +8102,18 @@ const renderer = defineRenderHandler(async (event) => {
   };
   await nitroApp.hooks.callHook("render:html", htmlContext, { event });
   if (isRenderingIsland && islandContext) {
-    const islandHead = {
-      link: [],
-      style: []
-    };
-    for (const tag of await head.resolveTags()) {
-      if (tag.tag === "link") {
-        islandHead.link.push({ key: "island-link-" + hash(tag.props), ...tag.props });
-      } else if (tag.tag === "style" && tag.innerHTML) {
-        islandHead.style.push({ key: "island-style-" + hash(tag.innerHTML), innerHTML: tag.innerHTML });
+    const islandHead = {};
+    for (const entry of head.headEntries()) {
+      for (const [key, value] of Object.entries(resolveUnrefHeadInput(entry.input))) {
+        const currentValue = islandHead[key];
+        if (Array.isArray(currentValue)) {
+          currentValue.push(...value);
+        }
+        islandHead[key] = value;
       }
     }
+    islandHead.link = islandHead.link || [];
+    islandHead.style = islandHead.style || [];
     const islandResponse = {
       id: islandContext.id,
       head: islandHead,
@@ -8168,17 +8198,21 @@ function renderPayloadJsonScript(opts) {
   const contents = opts.data ? stringify(opts.data, opts.ssrContext._payloadReducers) : "";
   const payload = {
     "type": "application/json",
-    "id": opts.id,
     "innerHTML": contents,
+    "data-nuxt-data": appId,
     "data-ssr": !(opts.ssrContext.noSSR)
   };
+  {
+    payload.id = "__NUXT_DATA__";
+  }
   if (opts.src) {
     payload["data-src"] = opts.src;
   }
+  const config = uneval(opts.ssrContext.config);
   return [
     payload,
     {
-      innerHTML: `window.__NUXT__={};window.__NUXT__.config=${uneval(opts.ssrContext.config)}`
+      innerHTML: `window.__NUXT__={};window.__NUXT__.config=${config}`
     }
   ];
 }
@@ -8215,7 +8249,7 @@ function getClientIslandResponse(ssrContext) {
   }
   const response = {};
   for (const clientUid in ssrContext.islandContext.components) {
-    const html = ssrContext.teleports?.[clientUid] || "";
+    const html = ssrContext.teleports?.[clientUid].replaceAll("<!--teleport start anchor-->", "") || "";
     response[clientUid] = {
       ...ssrContext.islandContext.components[clientUid],
       html,
@@ -8329,7 +8363,7 @@ const font$1 = /*#__PURE__*/Object.freeze({
 
 const compatibility = {"chromium":"chrome-launcher","satori":"node","resvg":"node","sharp":false,"css-inline":false};
 
-const componentNames = [{"hash":"eQ6ZSzmuSi","pascalName":"BrandedLogo","kebabName":"branded-logo","path":"/home/roy/Projects/reproduction/reproduction/node_modules/nuxt-og-image/dist/runtime/nuxt/components/Templates/Community/BrandedLogo.vue","category":"community","credits":"Full Stack Heroes <https://fullstackheroes.com/>"},{"hash":"urK4vBHedV","pascalName":"Frame","kebabName":"frame","path":"/home/roy/Projects/reproduction/reproduction/node_modules/nuxt-og-image/dist/runtime/nuxt/components/Templates/Community/Frame.vue","category":"community","credits":"@arashsheyda <https://github.com/arashsheyda>"},{"hash":"25HYRU2CwN","pascalName":"Nuxt","kebabName":"nuxt","path":"/home/roy/Projects/reproduction/reproduction/node_modules/nuxt-og-image/dist/runtime/nuxt/components/Templates/Community/Nuxt.vue","category":"community","credits":"NuxtLabs <https://nuxtlabs.com/>"},{"hash":"t4cC294xbl","pascalName":"NuxtSeo","kebabName":"nuxt-seo","path":"/home/roy/Projects/reproduction/reproduction/node_modules/nuxt-og-image/dist/runtime/nuxt/components/Templates/Community/NuxtSeo.vue","category":"community","credits":"Nuxt SEO <https://nuxtseo.com/>"},{"hash":"Ti15ewGcfK","pascalName":"Pergel","kebabName":"pergel","path":"/home/roy/Projects/reproduction/reproduction/node_modules/nuxt-og-image/dist/runtime/nuxt/components/Templates/Community/Pergel.vue","category":"community","credits":"Pergel <https://nuxtlabs.com/>"},{"hash":"g66oUAfYIc","pascalName":"SimpleBlog","kebabName":"simple-blog","path":"/home/roy/Projects/reproduction/reproduction/node_modules/nuxt-og-image/dist/runtime/nuxt/components/Templates/Community/SimpleBlog.vue","category":"community","credits":"Full Stack Heroes <https://fullstackheroes.com/>"},{"hash":"PdTiW3yQ0N","pascalName":"UnJs","kebabName":"un-js","path":"/home/roy/Projects/reproduction/reproduction/node_modules/nuxt-og-image/dist/runtime/nuxt/components/Templates/Community/UnJs.vue","category":"community","credits":"UnJS <https://unjs.io/>"},{"hash":"dxElbCCT8d","pascalName":"Wave","kebabName":"wave","path":"/home/roy/Projects/reproduction/reproduction/node_modules/nuxt-og-image/dist/runtime/nuxt/components/Templates/Community/Wave.vue","category":"community","credits":"Full Stack Heroes <https://fullstackheroes.com/>"},{"hash":"GANho8xkgv","pascalName":"WithEmoji","kebabName":"with-emoji","path":"/home/roy/Projects/reproduction/reproduction/node_modules/nuxt-og-image/dist/runtime/nuxt/components/Templates/Community/WithEmoji.vue","category":"community","credits":"Full Stack Heroes <https://fullstackheroes.com/>"}];
+const componentNames = [{"hash":"i0Vxmj8bqg","pascalName":"BrandedLogo","kebabName":"branded-logo","path":"/home/roy/Projects/reproduction/reproduction/node_modules/nuxt-og-image/dist/runtime/nuxt/components/Templates/Community/BrandedLogo.vue","category":"community","credits":"Full Stack Heroes <https://fullstackheroes.com/>"},{"hash":"tBHg51xiAt","pascalName":"Frame","kebabName":"frame","path":"/home/roy/Projects/reproduction/reproduction/node_modules/nuxt-og-image/dist/runtime/nuxt/components/Templates/Community/Frame.vue","category":"community","credits":"@arashsheyda <https://github.com/arashsheyda>"},{"hash":"Sqc3OTP2KQ","pascalName":"Nuxt","kebabName":"nuxt","path":"/home/roy/Projects/reproduction/reproduction/node_modules/nuxt-og-image/dist/runtime/nuxt/components/Templates/Community/Nuxt.vue","category":"community","credits":"NuxtLabs <https://nuxtlabs.com/>"},{"hash":"tEswIE9Ciw","pascalName":"NuxtSeo","kebabName":"nuxt-seo","path":"/home/roy/Projects/reproduction/reproduction/node_modules/nuxt-og-image/dist/runtime/nuxt/components/Templates/Community/NuxtSeo.vue","category":"community","credits":"Nuxt SEO <https://nuxtseo.com/>"},{"hash":"q432NYEB0T","pascalName":"Pergel","kebabName":"pergel","path":"/home/roy/Projects/reproduction/reproduction/node_modules/nuxt-og-image/dist/runtime/nuxt/components/Templates/Community/Pergel.vue","category":"community","credits":"Pergel <https://nuxtlabs.com/>"},{"hash":"YDrRRvPRVl","pascalName":"SimpleBlog","kebabName":"simple-blog","path":"/home/roy/Projects/reproduction/reproduction/node_modules/nuxt-og-image/dist/runtime/nuxt/components/Templates/Community/SimpleBlog.vue","category":"community","credits":"Full Stack Heroes <https://fullstackheroes.com/>"},{"hash":"wt558K6QyQ","pascalName":"UnJs","kebabName":"un-js","path":"/home/roy/Projects/reproduction/reproduction/node_modules/nuxt-og-image/dist/runtime/nuxt/components/Templates/Community/UnJs.vue","category":"community","credits":"UnJS <https://unjs.io/>"},{"hash":"6RdQZcuwZZ","pascalName":"Wave","kebabName":"wave","path":"/home/roy/Projects/reproduction/reproduction/node_modules/nuxt-og-image/dist/runtime/nuxt/components/Templates/Community/Wave.vue","category":"community","credits":"Full Stack Heroes <https://fullstackheroes.com/>"},{"hash":"gaB1TrbtTl","pascalName":"WithEmoji","kebabName":"with-emoji","path":"/home/roy/Projects/reproduction/reproduction/node_modules/nuxt-og-image/dist/runtime/nuxt/components/Templates/Community/WithEmoji.vue","category":"community","credits":"Full Stack Heroes <https://fullstackheroes.com/>"}];
 
 const debug_json = defineEventHandler(async (e) => {
   setHeader(e, "Content-Type", "application/json");
