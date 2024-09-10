@@ -140,7 +140,7 @@ const _inlineRuntimeConfig = {
         "id": "schema-org-graph"
       },
       "identity": "",
-      "version": "3.3.8"
+      "version": "3.3.9"
     },
     "nuxt-link-checker": {
       "version": "3.1.1",
@@ -231,7 +231,7 @@ const _inlineRuntimeConfig = {
         "defaultLocale": "en"
       }
     ],
-    "version": "2.2.16",
+    "version": "2.2.17",
     "debug": false
   },
   "nuxt-robots": {
@@ -921,7 +921,8 @@ const _apUikqdGfj = (nitroApp) => {
       return;
     }
     try {
-      htmlContext.bodyAppend.unshift(`<script type="application/json" data-nuxt-logs="${appId}">${stringify(ctx.logs, { ...devReducers, ...ctx.event.context._payloadReducers })}<\/script>`);
+      const reducers = Object.assign(/* @__PURE__ */ Object.create(null), devReducers, ctx.event.context._payloadReducers);
+      htmlContext.bodyAppend.unshift(`<script type="application/json" data-nuxt-logs="${appId}">${stringify(ctx.logs, reducers)}<\/script>`);
     } catch (e) {
       const shortError = e instanceof Error && "toString" in e ? ` Received \`${e.toString()}\`.` : "";
       console.warn(`[nuxt] Failed to stringify dev server logs.${shortError} You can define your own reducer/reviver for rich types following the instructions in https://nuxt.com/docs/api/composables/use-nuxt-app#payload.`);
@@ -936,6 +937,13 @@ function onConsoleLog(callback) {
     }
   });
   consola.wrapConsole();
+}
+
+function getSiteIndexable(e) {
+  const { env, indexable } = useSiteConfig(e);
+  if (typeof indexable !== "undefined")
+    return String(indexable) === "true";
+  return env === "production";
 }
 
 function normalizeSiteConfig(config) {
@@ -1003,12 +1011,6 @@ function envSiteConfig(env) {
   ]));
 }
 
-function useSiteConfig(e, _options) {
-  e.context.siteConfig = e.context.siteConfig || createSiteConfigStack();
-  const options = defu$1(_options, useRuntimeConfig(e)["nuxt-site-config"], { debug: false });
-  return e.context.siteConfig.get(options);
-}
-
 function useNitroOrigin(e) {
   const cert = process.env.NITRO_SSL_CERT;
   const key = process.env.NITRO_SSL_KEY;
@@ -1036,6 +1038,12 @@ function useNitroOrigin(e) {
   return withTrailingSlash(`${protocol}://${host}${port}`);
 }
 
+function useSiteConfig(e, _options) {
+  e.context.siteConfig = e.context.siteConfig || createSiteConfigStack();
+  const options = defu$1(_options, useRuntimeConfig(e)["nuxt-site-config"], { debug: false });
+  return e.context.siteConfig.get(options);
+}
+
 function resolveSitePath(pathOrUrl, options) {
   let path = pathOrUrl;
   if (hasProtocol(pathOrUrl, { strict: false, acceptRelative: true })) {
@@ -1054,10 +1062,13 @@ function resolveSitePath(pathOrUrl, options) {
   const resolvedUrl = withBase(path, baseWithOrigin);
   return path === "/" && !options.withBase ? withTrailingSlash(resolvedUrl) : fixSlashes(options.trailingSlash, resolvedUrl);
 }
+function isPathFile(path) {
+  const lastSegment = path.split("/").pop();
+  return !!(lastSegment || path).match(/\.[0-9a-z]+$/i)?.[0];
+}
 function fixSlashes(trailingSlash, pathOrUrl) {
   const $url = parseURL(pathOrUrl);
-  const isFileUrl = $url.pathname.includes(".");
-  if (isFileUrl)
+  if (isPathFile($url.pathname))
     return pathOrUrl;
   const fixedPath = trailingSlash ? withTrailingSlash($url.pathname) : withoutTrailingSlash($url.pathname);
   return `${$url.protocol ? `${$url.protocol}//` : ""}${$url.host || ""}${fixedPath}${$url.search || ""}${$url.hash || ""}`;
@@ -1088,13 +1099,6 @@ function withSiteUrl(e, path, options = {}) {
     base: e.context.nitro.baseURL,
     withBase: options.withBase
   });
-}
-
-function getSiteIndexable(e) {
-  const { env, indexable } = useSiteConfig(e);
-  if (typeof indexable !== "undefined")
-    return String(indexable) === "true";
-  return env === "production";
 }
 
 function defineNitroPlugin(def) {
@@ -7835,7 +7839,7 @@ function resolveUnref(r) {
   return typeof r === "function" ? r() : unref(r);
 }
 function resolveUnrefHeadInput(ref) {
-  if (ref instanceof Promise)
+  if (ref instanceof Promise || ref instanceof Date || ref instanceof RegExp)
     return ref;
   const root = resolveUnref(ref);
   if (!ref || !root)
@@ -8013,7 +8017,7 @@ const renderer = defineRenderHandler(async (event) => {
     nuxt: void 0,
     /* NuxtApp */
     payload: ssrError ? { error: ssrError } : {},
-    _payloadReducers: {},
+    _payloadReducers: /* @__PURE__ */ Object.create(null),
     modules: /* @__PURE__ */ new Set(),
     islandContext
   };

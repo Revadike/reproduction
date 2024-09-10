@@ -268,7 +268,7 @@ declare global {
   const useHeadSafe: typeof import('../../node_modules/@unhead/vue')['useHeadSafe']
   const useHydration: typeof import('../../node_modules/nuxt/dist/app/composables/hydrate')['useHydration']
   const useI18n: typeof import('../../node_modules/@nuxtjs/seo/dist/runtime/nuxt/composables/polyfills')['useI18n']
-  const useId: typeof import('../../node_modules/nuxt/dist/app/composables/id')['useId']
+  const useId: typeof import('../../node_modules/vue')['useId']
   const useIdle: typeof import('../../node_modules/@vueuse/core')['useIdle']
   const useInfiniteScroll: typeof import('../../node_modules/@vueuse/core')['useInfiniteScroll']
   const useIntersectionObserver: typeof import('../../node_modules/@vueuse/core')['useIntersectionObserver']
@@ -366,6 +366,7 @@ declare global {
   const useServerHeadSafe: typeof import('../../node_modules/@unhead/vue')['useServerHeadSafe']
   const useServerSeoMeta: typeof import('../../node_modules/@unhead/vue')['useServerSeoMeta']
   const useSessionStorage: typeof import('../../node_modules/@vueuse/core')['useSessionStorage']
+  const useShadowRoot: typeof import('../../node_modules/vue')['useShadowRoot']
   const useShare: typeof import('../../node_modules/@vueuse/core')['useShare']
   const useSiteConfig: typeof import('../../node_modules/nuxt-site-config/dist/runtime/nuxt/composables/useSiteConfig')['useSiteConfig']
   const useSlots: typeof import('../../node_modules/vue')['useSlots']
@@ -378,6 +379,7 @@ declare global {
   const useStyleTag: typeof import('../../node_modules/@vueuse/core')['useStyleTag']
   const useSupported: typeof import('../../node_modules/@vueuse/core')['useSupported']
   const useSwipe: typeof import('../../node_modules/@vueuse/core')['useSwipe']
+  const useTemplateRef: typeof import('../../node_modules/vue')['useTemplateRef']
   const useTemplateRefsList: typeof import('../../node_modules/@vueuse/core')['useTemplateRefsList']
   const useTextDirection: typeof import('../../node_modules/@vueuse/core')['useTextDirection']
   const useTextSelection: typeof import('../../node_modules/@vueuse/core')['useTextSelection']
@@ -711,7 +713,7 @@ declare module 'vue' {
     readonly useHeadSafe: UnwrapRef<typeof import('../../node_modules/@unhead/vue')['useHeadSafe']>
     readonly useHydration: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/hydrate')['useHydration']>
     readonly useI18n: UnwrapRef<typeof import('../../node_modules/@nuxtjs/seo/dist/runtime/nuxt/composables/polyfills')['useI18n']>
-    readonly useId: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/id')['useId']>
+    readonly useId: UnwrapRef<typeof import('../../node_modules/vue')['useId']>
     readonly useIdle: UnwrapRef<typeof import('../../node_modules/@vueuse/core')['useIdle']>
     readonly useInfiniteScroll: UnwrapRef<typeof import('../../node_modules/@vueuse/core')['useInfiniteScroll']>
     readonly useIntersectionObserver: UnwrapRef<typeof import('../../node_modules/@vueuse/core')['useIntersectionObserver']>
@@ -809,6 +811,7 @@ declare module 'vue' {
     readonly useServerHeadSafe: UnwrapRef<typeof import('../../node_modules/@unhead/vue')['useServerHeadSafe']>
     readonly useServerSeoMeta: UnwrapRef<typeof import('../../node_modules/@unhead/vue')['useServerSeoMeta']>
     readonly useSessionStorage: UnwrapRef<typeof import('../../node_modules/@vueuse/core')['useSessionStorage']>
+    readonly useShadowRoot: UnwrapRef<typeof import('../../node_modules/vue')['useShadowRoot']>
     readonly useShare: UnwrapRef<typeof import('../../node_modules/@vueuse/core')['useShare']>
     readonly useSiteConfig: UnwrapRef<typeof import('../../node_modules/nuxt-site-config/dist/runtime/nuxt/composables/useSiteConfig')['useSiteConfig']>
     readonly useSlots: UnwrapRef<typeof import('../../node_modules/vue')['useSlots']>
@@ -821,6 +824,7 @@ declare module 'vue' {
     readonly useStyleTag: UnwrapRef<typeof import('../../node_modules/@vueuse/core')['useStyleTag']>
     readonly useSupported: UnwrapRef<typeof import('../../node_modules/@vueuse/core')['useSupported']>
     readonly useSwipe: UnwrapRef<typeof import('../../node_modules/@vueuse/core')['useSwipe']>
+    readonly useTemplateRef: UnwrapRef<typeof import('../../node_modules/vue')['useTemplateRef']>
     readonly useTemplateRefsList: UnwrapRef<typeof import('../../node_modules/@vueuse/core')['useTemplateRefsList']>
     readonly useTextDirection: UnwrapRef<typeof import('../../node_modules/@vueuse/core')['useTextDirection']>
     readonly useTextSelection: UnwrapRef<typeof import('../../node_modules/@vueuse/core')['useTextSelection']>
