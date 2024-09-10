@@ -355,6 +355,20 @@ declare module 'nuxt/schema' {
       },
    },
 
+   "nuxt-schema-org": {
+      reactive: boolean,
+
+      minify: boolean,
+
+      scriptAttributes: {
+         id: string,
+      },
+
+      identity: any,
+
+      version: string,
+   },
+
    "nuxt-site-config": {
       stack: Array<{
 
@@ -456,40 +470,6 @@ declare module 'nuxt/schema' {
    },
   }
   interface PublicRuntimeConfig {
-   "nuxt-schema-org": {
-      reactive: boolean,
-
-      minify: boolean,
-
-      scriptAttributes: {
-         id: string,
-      },
-
-      identity: any,
-
-      version: string,
-   },
-
-   "nuxt-link-checker": {
-      version: string,
-
-      hasSitemapModule: boolean,
-
-      rootDir: string,
-
-      isNuxtContentDocumentDriven: boolean,
-
-      excludeLinks: Array<any>,
-
-      skipInspections: Array<any>,
-
-      fetchTimeout: number,
-
-      showLiveInspections: boolean,
-
-      fetchRemoteUrls: boolean,
-   },
-
    "nuxt-seo": {
       canonicalQueryWhitelist: Array<string>,
    },

@@ -1062,7 +1062,7 @@
     "@typescript-eslint/types" "^8.4.0"
     "@typescript-eslint/utils" "^8.4.0"
 
-"@nuxt/eslint@^0.5.5":
+"@nuxt/eslint@^0.5.6":
   version "0.5.6"
   resolved "https://registry.yarnpkg.com/@nuxt/eslint/-/eslint-0.5.6.tgz#40700f61a96041af6d0e96865acba65edf6181d5"
   integrity sha512-kW9+vyFBSSCYY1oaHhtMZPoZUlD2fLh1j6t/giCw6M/IiPWsMs2Hfzm/hqrfP/XNw9pvvtATAxRB9eF76IStwA==

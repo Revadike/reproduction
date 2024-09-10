@@ -96,7 +96,7 @@
         "../node_modules/@nuxtjs/sitemap/dist/runtime/types"
       ],
       "#icon-collections": [
-        "./icon-collections.mjs"
+        "./icon-collections"
       ],
       "#vue-router": [
         "../node_modules/vue-router"
@@ -105,7 +105,7 @@
         "./imports"
       ],
       "#app-manifest": [
-        "./manifest/meta/dev.json"
+        "./manifest/meta/31d38873-0e01-48af-96c7-5b4d76c184cd.json"
       ],
       "#build": [
         "."
