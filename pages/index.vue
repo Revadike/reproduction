@@ -4,6 +4,9 @@
   </div>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+var test = 1
+</script>
 
-<style  lang="scss"></style>
+ <style   lang="scss"></style>  
+
