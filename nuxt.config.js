@@ -1,41 +1,123 @@
-const cacheTTL = 60 * 60 * 24 * 365 // 1 year – you can set this to whatever you want
+const siteName = 'Reproduction';
+const theme = {
+  colors: {
+    primary: '#FF0000',
+    secondary: '#00FF00',
+    tertiary: '#0000FF'
+  }
+};
+
+const isProduction = process.env.NODE_ENV === 'production';
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
-export default {
-  devtools: { enabled: true },
+export default defineNuxtConfig({
+  modules: [
+    '@nuxt/eslint',
+    '@nuxt/fonts',
+    '@nuxt/image',
+    '@pinia/nuxt',
+    '@vueuse/nuxt',
+    'dayjs-nuxt',
+    'nuxt-vuefire',
+    'pinia-plugin-persistedstate/nuxt',
+    'vuetify-nuxt-module'
+  ],
+
+  ssr: false,
 
   app: {
     head: {
-      link: [{ rel: 'icon', href: '/favicon.ico' }]
+      htmlAttrs: { lang: 'nl', dir: 'ltr' },
+      meta: [
+        { charset: 'utf-8' },
+        { 'http-equiv': 'X-UA-Compatible', 'content': 'IE=edge' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1, viewport-fit=cover, minimum-scale=1, user-scalable=no' },
+        { property: 'og:type', content: 'website' },
+        { property: 'og:site_name', content: siteName },
+        { name: 'theme-color', content: theme.colors.primary },
+        { name: 'msapplication-navbutton-color', content: theme.colors.primary },
+        { name: 'apple-mobile-web-app-status-bar-style', content: theme.colors.primary }
+      ],
+      link: [
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      ]
     }
   },
 
-  css: ['@/assets/scss/main.scss'],
+  runtimeConfig: {
+    public: {
+      siteName,
+      isProduction,
+      theme,
+      baseUrl: process.env.BASE_URL
+    }
+  },
+
+  build: {
+    transpile: ['vuetify']
+  },
+
+  compatibilityDate: '2025-07-15',
 
   nitro: {
-    compressPublicAssets: true,
-    routeRules: {
-      '/img/**': { headers: { 'cache-control': `public,max-age=${cacheTTL},s-maxage=${cacheTTL}` } },
-      '/_nuxt/**': { headers: { 'cache-control': `public,max-age=${cacheTTL},s-maxage=${cacheTTL}` } }
+    firebase: { gen: 2 }
+  },
+
+  dayjs: {
+    locales: ['nl'],
+    plugins: ['timezone'],
+    defaultLocale: 'nl',
+    defaultTimezone: 'Europe/Brussels'
+  },
+
+  eslint: {
+    config: {
+      stylistic: true
     }
   },
 
-  modules: ['@nuxtjs/google-fonts', '@nuxtjs/seo', '@nuxtjs/tailwindcss', '@nuxt/eslint', 'nuxt-icon', '@vueuse/nuxt'],
+  fonts: {
+    families: [
+      {
+        name: 'Roboto',
+        provider: 'google',
+        weights: [100, 300, 400, 500, 700],
+        styles: ['normal', 'italic'],
+        subsets: ['latin', 'latin-ext']
+      }
+    ]
+  },
 
-  googleFonts: {
-    // https://google-fonts.nuxtjs.org/getting-started/options
-    families: {
-      Inter: [100, 300, 400, 500, 600, 700]
+  piniaPluginPersistedstate: {
+    storage: 'localStorage'
+  },
+
+  vuefire: {
+    emulators: !isProduction,
+    auth: { enabled: true },
+    config: {
+      appId: process.env.FIREBASE_APP_ID,
+      apiKey: process.env.FIREBASE_API_KEY,
+      authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+      databaseURL: process.env.FIREBASE_DATABASE_URL,
+      measurementId: process.env.FIREBASE_MEASUREMENT_ID,
+      projectId: process.env.FIREBASE_PROJECT_ID,
+      storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+      messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID
     }
   },
 
-  site: {
-    // https://nuxtseo.com/
-    url: 'https://example.com', // TODO: Your site's URL
-    name: 'Welcome to Nuxt', // TODO: Your site's default meta title
-    description: 'My awesome Nuxt project', // TODO: Your site's default meta description
-    defaultLocale: 'en' // TODO: HTML lang attribute value
-  },
-
-  compatibilityDate: '2024-08-27'
-};
+  vuetify: {
+    vuetifyOptions: {
+      icons: {
+        defaultSet: 'mdi'
+      },
+      theme: {
+        defaultTheme: 'default',
+        themes: {
+          default: theme
+        }
+      }
+    }
+  }
+});
